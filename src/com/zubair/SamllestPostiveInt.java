@@ -5,13 +5,15 @@ public class SamllestPostiveInt {
     public int solution(int[] A) {
 
         int[] sortedA=sortedArray(A);
+        if (sortedA.length > 0) {
+
 
         for (int i = 0; i < sortedA.length; i++) {
             int j=i+1;
             if(j<sortedA.length && A[j]-A[i]>1 && A[j]>0 && A[i]>0){
                 return A[i]+1;
-            }else if(j == sortedA.length){
-                return A[j]+1;
+            }else if(j == sortedA.length && A[i]<0){
+                return 1;
             } else if(j == sortedA.length-1 && A[i]<0){
                 return 1;
             } else if(j == sortedA.length-1 && A[i]>0){
@@ -19,6 +21,9 @@ public class SamllestPostiveInt {
             }else if(j == sortedA.length-1 && A[j]>0 && A[i]<0 && A[j] +A[i] >1){
                 return A[j]-1;
             }
+        }
+        }else{
+            return 1;
         }
 
         return 0;
@@ -40,7 +45,7 @@ public class SamllestPostiveInt {
 
     public static void main(String[] args) {
         SamllestPostiveInt samllestPostiveInt= new SamllestPostiveInt();
-        int[] A={-3,2,1};
+        int[] A={3,2,1};
         System.out.println(samllestPostiveInt.solution(A));
     }
 
