@@ -7,8 +7,15 @@ import java.util.List;
 public class Task2 {
 
     public int solution(int N, String S) {
-        StringBuilder createSeats = new StringBuilder();
         int availableSeats = N * 3;
+        String reservedSeatTrimString=S.trim().replaceAll("\\s+", "");
+        int reservedSeatVarLen=reservedSeatTrimString.length();
+
+        if(reservedSeatVarLen<=1 || reservedSeatVarLen%2!=0)
+            return 0; // In real situation i should throw exception of illegalArgs
+
+        StringBuilder createSeats = new StringBuilder();
+
         for (int i = 1; i <= N; i++) {
             createSeats
                     .append(i + "A")
@@ -23,11 +30,9 @@ public class Task2 {
         }
 
         List<String> reservedSeat = new ArrayList<>();
-        StringBuilder seatVal = new StringBuilder();
-        seatVal.append(S.trim().replaceAll("\\s+", ""));
-        for (int i = 0; i < S.length() - 2; i++) {
+        for (int i = 0; i < reservedSeatVarLen - 1; i++) {
             int j = i + 2;
-            String seat = seatVal.substring(i++, j);
+            String seat = reservedSeatTrimString.substring(i++, j);
             reservedSeat.add(seat);
 
         }
@@ -68,7 +73,7 @@ public class Task2 {
 
     public static void main(String[] args) {
         Task2 task2 = new Task2();
-        System.out.println(task2.solution(2, "1A 2G "));
+        System.out.println(task2.solution(2, "11H  2H 2A "));
         System.out.println("AB".contains("A"));
     }
 }
