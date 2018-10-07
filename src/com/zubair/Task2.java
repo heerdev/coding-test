@@ -74,6 +74,5 @@ public class Task2 {
     public static void main(String[] args) {
         Task2 task2 = new Task2();
         System.out.println(task2.solution(2, "11H  2H 2A "));
-        System.out.println("AB".contains("A"));
     }
 }
